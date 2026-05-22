@@ -1,0 +1,15 @@
+.env
+*.key
+*.pem
+*__pycache__/
+.venv/
+/.DS_Store
+
+data/raw/*
+data/exports/*
+*.csv
+*.parquet
+
+!data/sample/
+!data/sample/.gitkeep
+!data/exports/.gitkeep
