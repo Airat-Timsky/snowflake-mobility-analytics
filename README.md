@@ -51,6 +51,7 @@ Snowflake OPS schema
 * OPS
 
 ### Results:
+```text
 Metric 				Value
 Raw taxi rows 			2,964,624
 Valid taxi rows 		2,863,081
@@ -59,8 +60,10 @@ Weather rows   			744
 Total taxi revenue  		$78,164,735.77
 Estimated Snowflake cost   	$2.97
 Trial budget used    		0.74%
+```
 
 ### Business highlights:
+```text
 Metric						Result
 Top pickup zone by demand			Manhattan / Upper East Side South
 Top pickup zone by revenue			Queens / JFK Airport
@@ -68,8 +71,10 @@ Top revenue route				JFK Airport → Outside of NYC
 Top demand hour					2024-01-17 18:00
 Trips during top demand hour			8,697
 Highest average trips/hour weather bucket	freezing
+```
 
 ### Data quality findings:
+```text
 Check				Count
 Pickup before January 2024	15
 Pickup after January 2024	3
@@ -77,15 +82,17 @@ Invalid time order		870
 Non-positive distance		60,371
 Negative fare			37,448
 Negative total			35,504
+```
 
 ### Cost monitoring:
 The first batch analytics milestone was completed using an XSMALL Snowflake warehouse.
-
+```text
 Metric					Value
 Credits used				0.9907
 Estimated cost				$2.97
 Estimated trial budget used		0.74%
 Estimated trial budget remaining	$397.03
+```
 
 Cost estimate assumes $3.00 per Snowflake credit. Actual credit price may vary by cloud provider, region, edition, and contract.
 
