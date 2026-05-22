@@ -34,6 +34,7 @@ Data sources:
 * NYC Yellow Taxi Trip Records, January 2024
 * NYC Taxi Zone Lookup
 * NYC hourly weather data, January 2024
+```text
 
 ##Snowflake objects
 
