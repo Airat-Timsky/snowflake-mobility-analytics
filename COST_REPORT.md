@@ -1,6 +1,5 @@
 # 7. COST_REPORT.md
 
-```md
 # Cost Report
 
 ## Summary

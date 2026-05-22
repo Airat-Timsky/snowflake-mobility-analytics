@@ -1,6 +1,5 @@
 # 6. ARCHITECTURE.md
 
-```md
 # Architecture
 
 ## Overview

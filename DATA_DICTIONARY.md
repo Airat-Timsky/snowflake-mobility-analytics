@@ -1,6 +1,5 @@
 # 8. DATA_DICTIONARY.md
 
-```md
 # Data Dictionary
 
 ## RAW.TAXI_ZONE_LOOKUP
