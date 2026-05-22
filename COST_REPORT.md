@@ -6,14 +6,14 @@
 ## Summary
 
 The first Snowflake batch analytics milestone was completed using an XSMALL warehouse.
-
-| Metric | Value |
-|---|---:|
-| Credits used | 0.9907 |
-| Estimated cost | $2.97 |
-| Estimated trial budget used | 0.74% |
-| Estimated trial budget remaining | $397.03 |
-
+```text
+| Metric                            | Value     |
+|-----------------------------------|----------:|
+| Credits used                      | 0.9907    |
+| Estimated cost                    | $2.97     |
+| Estimated trial budget used       | 0.74%     |
+| Estimated trial budget remaining  | $397.03   |
+```
 ## Assumptions
 
 Estimated cost is calculated as:
