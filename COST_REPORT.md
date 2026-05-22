@@ -1,6 +1,4 @@
----
-
-#7. COST_REPORT.md
+# 7. COST_REPORT.md
 
 ```md
 # Cost Report
@@ -28,20 +26,21 @@ credit_price_usd = 3.00
 trial_budget_usd = 400.00
 
 Actual Snowflake credit price may vary by cloud provider, region, edition, and contract.
+```
 
-Cost controls used:
+### Cost controls used:
 * XSMALL warehouse
 * AUTO_SUSPEND = 60
 * Manual warehouse suspension
 * Resource monitor
 * Separate OPS reporting views
 
-Current warehouse:
+### Current warehouse:
 * WH_MOBILITY_DEV
 * Size: XSMALL
 * Auto suspend: 60 seconds
 
-##Notes
+## Notes
 
 This report focuses on warehouse compute usage from SNOWFLAKE.ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY.
 

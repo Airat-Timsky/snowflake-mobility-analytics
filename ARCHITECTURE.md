@@ -1,6 +1,4 @@
----
-
-#6. ARCHITECTURE.md
+# 6. ARCHITECTURE.md
 
 ```md
 # Architecture
@@ -15,7 +13,7 @@ SILVER  → cleaned and normalized data
 GOLD    → analytics-ready marts
 OPS     → operational reporting and monitoring
 
-##Data Flow:
+Data Flow:
 
 NYC Taxi Trip Records Parquet
 NYC Taxi Zone Lookup CSV
@@ -32,22 +30,23 @@ GOLD schema
         |
         v
 OPS schema
+```
 
-##RAW layer
+## RAW layer
 
 The RAW layer stores source-aligned data with minimal transformation.
 
-Objects:
+### Objects:
 
 * RAW.TAXI_ZONE_LOOKUP
 * RAW.YELLOW_TAXI_TRIPS_AUTO
 * RAW.WEATHER_NYC_HOURLY
 
-##SILVER layer
+## SILVER layer
 
 The SILVER layer applies type conversion, normalization, enrichment, and basic validation.
 
-Objects:
+### Objects:
 * SILVER.YELLOW_TAXI_TRIPS_CLEAN
 * SILVER.YELLOW_TAXI_TRIPS_VALID
 * SILVER.WEATHER_NYC_HOURLY_CLEAN
@@ -57,7 +56,7 @@ TO_TIMESTAMP_NTZ(column_name::NUMBER, 6)
 
 Taxi trip timestamps were loaded from Parquet as epoch microseconds and converted in the SILVER layer.
 
-##GOLD layer
+## GOLD layer
 
 The GOLD layer contains analytics-ready marts:
 * GOLD.PICKUP_ZONE_METRICS
@@ -67,7 +66,7 @@ The GOLD layer contains analytics-ready marts:
 * GOLD.WEATHER_IMPACT_BY_BUCKET
 * GOLD.TOP_WEATHER_DEMAND_HOURS
 
-##OPS layer
+## OPS layer
 
 The OPS layer contains monitoring and reporting views:
 * OPS.PIPELINE_SUMMARY
@@ -78,7 +77,7 @@ The OPS layer contains monitoring and reporting views:
 * OPS.COST_MONITORING_SUMMARY
 * OPS.COST_MONITORING_DAILY
 
-##Cost controls
+## Cost controls
 
 The project uses:
 * XSMALL warehouse
