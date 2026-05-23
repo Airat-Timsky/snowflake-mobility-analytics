@@ -7,9 +7,10 @@
 
 data/raw/*
 data/exports/*
-*.csv
 *.parquet
 
 !data/sample/
+!data/sample/**
+!data/sample/*.csv
 !data/sample/.gitkeep
 !data/exports/.gitkeep
