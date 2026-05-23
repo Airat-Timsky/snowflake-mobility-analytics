@@ -108,3 +108,19 @@ Cost estimate assumes $3.00 per Snowflake credit. Actual credit price may vary b
 * Package project for reproducible GitHub demo
 * Add Streamlit dashboard
 * Add simulated streaming ingestion
+
+## Screenshots
+
+Project screenshots are stored in [`diagrams/screenshots`](diagrams/screenshots).
+
+Recommended review order:
+
+1. Pipeline summary
+2. Data quality report
+3. Business highlights
+4. Top pickup zones
+5. Top revenue routes
+6. Weather quality report
+7. Weather impact by bucket
+8. Cost monitoring summary
+9. Warehouse suspended status
