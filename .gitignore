@@ -5,6 +5,9 @@
 .venv/
 /.DS_Store
 */.DS_Store
+**/.DS_Store
+data/.DS_Store
+diagrams/.DS_Store
 
 data/raw/*
 data/exports/*

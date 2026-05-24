@@ -124,3 +124,19 @@ Recommended review order:
 7. Weather impact by bucket
 8. Cost monitoring summary
 9. Warehouse suspended status
+
+## Local Streamlit dashboard
+
+The project includes a local Streamlit dashboard based on exported Snowflake sample data.
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app/streamlit_app.py
+```
+The dashboard uses CSV files from:
+
+```text
+data/sample/
+```
