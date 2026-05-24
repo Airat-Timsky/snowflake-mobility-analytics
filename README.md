@@ -140,3 +140,31 @@ The dashboard uses CSV files from:
 ```text
 data/sample/
 ```
+
+## Local Streamlit dashboard
+
+The repository includes a local Streamlit dashboard based on exported Snowflake sample data.
+
+The dashboard can be run without an active Snowflake account because it reads CSV files from:
+
+```text
+data/sample/
+```
+
+### Run locally
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app/streamlit_app.py
+```
+
+### Dashboard sections
+
+- Project summary
+- Cost monitoring
+- Pickup zone performance
+- Top revenue routes
+- Weather impact
+- Data quality findings
