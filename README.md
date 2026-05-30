@@ -15,20 +15,46 @@ This project analyzes NYC Yellow Taxi trips for January 2024 and enriches trip d
 
 ## Architecture
 
-```text
-External data sources
-        |
-        v
-Snowflake RAW schema
-        |
-        v
-Snowflake SILVER schema
-        |
-        v
-Snowflake GOLD schema
-        |
-        v
-Snowflake OPS schema
+The project follows a medallion-style architecture implemented in Snowflake and includes both batch analytics and a streaming simulation prototype.
+
+```mermaid
+flowchart TD
+    A[NYC Yellow Taxi Trip Records<br/>Parquet] --> B[RAW.YELLOW_TAXI_TRIPS_AUTO]
+    C[NYC Taxi Zone Lookup<br/>CSV] --> D[RAW.TAXI_ZONE_LOOKUP]
+    E[NYC Hourly Weather<br/>CSV] --> F[RAW.WEATHER_NYC_HOURLY]
+
+    B --> G[SILVER.YELLOW_TAXI_TRIPS_CLEAN]
+    G --> H[SILVER.YELLOW_TAXI_TRIPS_VALID]
+    D --> H
+
+    F --> I[SILVER.WEATHER_NYC_HOURLY_CLEAN]
+
+    H --> J[GOLD.PICKUP_ZONE_METRICS]
+    H --> K[GOLD.HOURLY_PICKUP_DEMAND]
+    H --> L[GOLD.ROUTE_REVENUE_METRICS]
+
+    H --> M[GOLD.WEATHER_IMPACT_HOURLY]
+    I --> M
+    M --> N[GOLD.WEATHER_IMPACT_BY_BUCKET]
+    M --> O[GOLD.TOP_WEATHER_DEMAND_HOURS]
+
+    J --> P[OPS.BUSINESS_HIGHLIGHTS]
+    L --> P
+    H --> Q[OPS.PIPELINE_SUMMARY]
+    H --> R[OPS.DATA_QUALITY_REPORT]
+    I --> S[OPS.WEATHER_QUALITY_REPORT]
+    M --> T[OPS.WEATHER_BUSINESS_SUMMARY]
+
+    X[Python Event Generator<br/>JSONL batches] --> Y[RAW.STREAM_TRIP_EVENTS<br/>VARIANT]
+    Y --> Z[SILVER.STREAM_TRIP_EVENTS_CLEAN]
+    D --> Z
+
+    Z --> AA[GOLD.LIVE_PICKUP_ZONE_METRICS]
+    Z --> AB[GOLD.LIVE_ROUTE_METRICS]
+    Z --> AC[OPS.LIVE_STREAM_SUMMARY]
+
+    U[SNOWFLAKE.ACCOUNT_USAGE] --> V[OPS.COST_MONITORING_SUMMARY]
+    U --> W[OPS.COST_MONITORING_DAILY]
 ```
 
 ### Data sources:
@@ -98,16 +124,34 @@ Cost estimate assumes $3.00 per Snowflake credit. Actual credit price may vary b
 
 ## Project status
 
-### Current milestone:
-* Batch ingestion completed
-* Taxi data modeled through RAW/SILVER/GOLD layers
-* Weather enrichment completed
-* OPS quality and cost reporting completed
+### Completed milestones:
+* Batch ingestion of NYC Yellow Taxi trip records
+* Taxi zone enrichment
+* Weather data integration
+* RAW / SILVER / GOLD / OPS data modeling
+* Data quality reporting
+* Cost monitoring
+* Local Streamlit dashboard based on exported Snowflake data
+* Streaming simulation prototype using generated JSONL events
+* Live streaming-oriented GOLD metrics and OPS summary
 
-### Next milestone:
-* Package project for reproducible GitHub demo
-* Add Streamlit dashboard
-* Add simulated streaming ingestion
+### Current streaming prototype result
+
+```text
+Metric                                  Value
+Simulated streaming events processed    120
+Distinct event IDs                      120
+Live event revenue                      $6,496.20
+Top live pickup zone by demand          Midtown Center
+Top live route by revenue               Upper East Side South → 
+                                        Upper East Side North
+```
+
+### Next milestones
+
+* Add streaming metrics to the local Streamlit dashboard
+* Replace manual JSONL append with stage-based ingestion and load metadata
+* Evaluate Snowpipe Streaming or Kafka-based ingestion
 
 ## Screenshots
 
@@ -135,15 +179,6 @@ source .venv/bin/activate
 pip install -r requirements.txt
 streamlit run app/streamlit_app.py
 ```
-The dashboard uses CSV files from:
-
-```text
-data/sample/
-```
-
-## Local Streamlit dashboard
-
-The repository includes a local Streamlit dashboard based on exported Snowflake sample data.
 
 The dashboard can be run without an active Snowflake account because it reads CSV files from:
 
