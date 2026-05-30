@@ -168,3 +168,50 @@ streamlit run app/streamlit_app.py
 - Top revenue routes
 - Weather impact
 - Data quality findings
+
+
+## Streaming simulation prototype
+
+The project includes an initial streaming-oriented prototype based on simulated taxi trip completion events.
+
+### Event flow
+
+```text
+Python event generator
+        |
+        v
+JSONL event batches
+        |
+        v
+RAW.STREAM_TRIP_EVENTS (VARIANT)
+        |
+        v
+SILVER.STREAM_TRIP_EVENTS_CLEAN
+        |
+        v
+GOLD.LIVE_PICKUP_ZONE_METRICS / GOLD.LIVE_ROUTE_METRICS
+        |
+        v
+OPS.LIVE_STREAM_SUMMARY
+```
+
+### Implemented features
+
+- Python generator for simulated `trip_completed` events
+- JSONL event payload format
+- Raw JSON storage in Snowflake using `VARIANT`
+- Typed SILVER view enriched with taxi zone lookup data
+- Live GOLD metrics by pickup zone and route
+- Append test using two event batches
+
+### Current prototype result
+
+| Metric | Value |
+|---|---:|
+| First event batch | 20 events |
+| Second event batch | 100 events |
+| Total processed streaming events | 120 events |
+
+### Current limitation
+
+This milestone simulates incremental streaming ingestion by appending JSONL event batches through the Snowflake UI. A future milestone will replace manual batch append with a real near-real-time transport such as Snowpipe Streaming or a Kafka-based integration.
