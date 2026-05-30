@@ -18,5 +18,6 @@ data/exports/*
 !data/sample/*.csv
 !data/sample/.gitkeep
 !data/exports/.gitkeep
-!data/.DS_Store
-!diagrams/.DS_Store
+
+streaming/output/*
+!streaming/output/.gitkeep
